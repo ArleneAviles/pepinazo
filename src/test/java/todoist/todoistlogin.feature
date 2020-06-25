@@ -1,12 +1,18 @@
 Feature: Todoist Login
 
-  Scenario: User us able to login with email credentials
-    Given I have the correct email credentials
-    When I navigate to todoist site
-    Then I will be in the todoist Page
+  Scenario Outline: User is able login with email credentials
+    Given I navigate to todoist
+    When I enter <user> and <password>
+    Then I can see the Project page
 
-  Scenario: User can login with google credentials
-    Given I have a google account
-    When I click on continue with google button
-    Then I will be in the todoist Page
+    Examples:
+      | user                   | password  |
+      | jomarnavarro@gmail.com | Test@1234 |
+      | jomarnavarro@gmail.com | Test@1234 |
+      | jomarnavarro@gmail.com | Test@1235 |
+
+#  Scenario: User can login with facebook credentials
+#    Given I navigate to todoist
+#    When I log in using facebook
+#    Then I can see the Project page
 

@@ -20,7 +20,7 @@ public class StepDefs {
 
 	public WebDriver driver;
 
-	@Before
+	//@Before
 	public void setUpTest() {
 		ChromeOptions opt = new ChromeOptions();
 		opt.addArguments("--disable-notifications");
@@ -28,7 +28,7 @@ public class StepDefs {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 
-	@After
+	//@After
 	public void tearDownTest() {
 		driver.quit();
 	}
