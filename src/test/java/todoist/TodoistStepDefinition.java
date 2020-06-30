@@ -25,6 +25,7 @@ public class TodoistStepDefinition {
 
     public WebDriver driver;
     public WebDriverWait wait;
+    public int numeroCanicas;
 
     @Before
     public void setUpTest() {
@@ -182,10 +183,30 @@ public class TodoistStepDefinition {
     private void agregarProyectoTask() {
     }
 
-
-
-
     @Then("El nuevo proyecto debe estar listado al final")
     public void elNuevoProyectoDebeEstarListadoAlFinal() {
+    }
+
+    @Given("hice login con {word} y {word}")
+    public void ingresarConCredenciales(String userName, String password) {
+        iNavigateToTodoist();
+        iEnterMyCredentials(userName, password);
+        iCanSeeTheProjectPage();
+    }
+
+    @Given("I have {int} marbles")
+    public void iHaveMarbles(int numMarbles) {
+        numeroCanicas = numMarbles;
+    }
+
+
+    @When("I give away {int}")
+    public void iGiveAway(int numMarbles) {
+        numeroCanicas = numeroCanicas - numMarbles;
+    }
+
+    @Then("I have {int} marbles left")
+    public void iHaveXMarblesLeft(int numMarbles) {
+        assertTrue(numeroCanicas == numMarbles);
     }
 }
